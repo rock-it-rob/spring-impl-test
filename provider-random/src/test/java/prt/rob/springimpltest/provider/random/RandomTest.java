@@ -1,4 +1,4 @@
-package prt.rob.springtestimpl.provider.random;
+package prt.rob.springimpltest.provider.random;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

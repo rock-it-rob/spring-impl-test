@@ -11,6 +11,7 @@
     <module>provider-api</module>
     <module>app-client</module>
     <module>provider-random</module>
+    <module>provider-timestamp</module>
   </modules>
 
   <packaging>pom</packaging>

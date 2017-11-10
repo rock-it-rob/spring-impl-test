@@ -1,4 +1,4 @@
-package prt.rob.springtestimpl.provider.random;
+package prt.rob.springimpltest.provider.random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
