@@ -8,6 +8,7 @@ package prt.rob.springtestimpl.app;
  *
  * @author Rob Benton
  */
+@SuppressWarnings("WeakerAccess")
 public class AppClient
 {
   public static void main(String[] args)
