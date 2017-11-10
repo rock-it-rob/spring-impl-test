@@ -6,6 +6,7 @@ package prt.rob.springtestimpl.provider;
  *
  * @author Rob Benton
  */
+@FunctionalInterface
 public interface StringValueProvider
 {
   /**

@@ -10,6 +10,7 @@
   <modules>
     <module>provider-api</module>
     <module>app-client</module>
+    <module>provider-random</module>
   </modules>
 
   <packaging>pom</packaging>

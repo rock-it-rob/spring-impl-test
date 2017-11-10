@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="app-client" />
         <module name="provider-api" />
+        <module name="provider-random" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="app-client" target="1.8" />
       <module name="provider-api" target="1.8" />
+      <module name="provider-random" target="1.8" />
       <module name="spring-impl-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
