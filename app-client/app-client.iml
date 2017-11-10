@@ -20,6 +20,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.0.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="module" module-name="provider-random" scope="RUNTIME" />
+    <orderEntry type="module" module-name="provider-timestamp" scope="RUNTIME" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:slf4j-jdk14:1.7.25" level="project" />
   </component>
 </module>
