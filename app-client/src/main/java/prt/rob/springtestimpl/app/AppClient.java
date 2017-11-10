@@ -20,6 +20,11 @@ public class AppClient
 
   private static final String SPRING_CONTEXT_XML = "/META-INF/spring-context.xml";
 
+  /**
+   * Main method.
+   *
+   * @param args leave empty
+   */
   public static void main(String[] args)
   {
     try (
