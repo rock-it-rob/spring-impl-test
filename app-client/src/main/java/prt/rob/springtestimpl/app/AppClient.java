@@ -1,5 +1,10 @@
 package prt.rob.springtestimpl.app;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import prt.rob.springtestimpl.provider.StringValueProvider;
+
 /**
  * AppClient is the application client for the spring-impl-test project. It
  * executes business logic using the <em>provider-api</em> module without
@@ -11,8 +16,19 @@ package prt.rob.springtestimpl.app;
 @SuppressWarnings("WeakerAccess")
 public class AppClient
 {
+  private static final Logger log = LoggerFactory.getLogger(AppClient.class.getName());
+
+  private static final String SPRING_CONTEXT_XML = "/META-INF/spring-context.xml";
+
   public static void main(String[] args)
   {
-
+    try (
+      ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(SPRING_CONTEXT_XML)
+    )
+    {
+      StringValueProvider provider = context.getBean(StringValueProvider.class);
+      String value = provider.getValue();
+      log.info(value);
+    }
   }
 }
