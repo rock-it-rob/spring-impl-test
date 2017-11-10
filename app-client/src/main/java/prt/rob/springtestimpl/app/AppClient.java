@@ -18,7 +18,7 @@ public class AppClient
 {
   private static final Logger log = LoggerFactory.getLogger(AppClient.class.getName());
 
-  private static final String SPRING_CONTEXT_XML = "/META-INF/spring-context.xml";
+  private static final String SPRING_CONTEXT_XML = "/META-INF/app-client-spring.xml";
 
   /**
    * Main method.
