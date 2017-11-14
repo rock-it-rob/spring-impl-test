@@ -6,6 +6,6 @@
 
   <context:annotation-config/>
 
-  <bean class="prt.rob.springimpltest.provider.random.RandomConfig"/>
+  <bean class="prt.rob.springimpltest.provider.properties.PropertiesConfig"/>
 
 </beans>

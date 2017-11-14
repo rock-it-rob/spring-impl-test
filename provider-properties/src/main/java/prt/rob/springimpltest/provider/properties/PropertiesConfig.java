@@ -45,7 +45,7 @@ public class PropertiesConfig
     {
       if (!fileResource.exists())
       {
-        log.error("Could not load value from property file resource: " + fileResource.getFilename());
+        log.error("Could not load value from property file resource: " + fileResource.getDescription());
         return new String();
       }
 
