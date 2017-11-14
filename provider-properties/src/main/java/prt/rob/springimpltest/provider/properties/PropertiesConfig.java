@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.core.io.ClassPathResource;
 import prt.rob.springtestimpl.provider.StringValueProvider;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 /**
@@ -32,26 +32,30 @@ public class PropertiesConfig
    * file follow that method's description. The single argument is provided by
    * the spring configuration xml file.
    *
-   * @param filepath location of the property file providing the value to
-   *                 return.
+   * @param fileResource location of the property file providing the value to
+   *                     return.
    * @return
    */
   @Bean
-  public StringValueProvider propertiesProvider(@Autowired String filepath)
+  public StringValueProvider propertiesProvider(@Autowired ClassPathResource fileResource)
   {
     log.debug("Instantiating Properties value provider.");
 
     return () ->
     {
-      InputStream is = getClass().getResourceAsStream(filepath);
+      if (!fileResource.exists())
+      {
+        log.error("Could not load value from property file resource: " + fileResource.getFilename());
+        return new String();
+      }
+
       Properties p = new Properties();
       try
       {
-        p.load(is);
-        is.close();
+        p.load(fileResource.getInputStream());
       } catch (IOException e)
       {
-        log.error("Could not load value from property file: " + filepath);
+        log.error("Error reading from property file input stream: " + e.getMessage());
       }
       return p.getProperty(VALUE_PROPERTY, "");
     };
