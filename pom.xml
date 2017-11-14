@@ -12,6 +12,7 @@
     <module>app-client</module>
     <module>provider-random</module>
     <module>provider-timestamp</module>
+    <module>provider-properties</module>
   </modules>
 
   <packaging>pom</packaging>

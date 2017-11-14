@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="app-client" />
         <module name="provider-api" />
+        <module name="provider-properties" />
         <module name="provider-random" />
         <module name="provider-timestamp" />
       </profile>
@@ -15,6 +16,7 @@
     <bytecodeTargetLevel>
       <module name="app-client" target="1.8" />
       <module name="provider-api" target="1.8" />
+      <module name="provider-properties" target="1.8" />
       <module name="provider-random" target="1.8" />
       <module name="provider-timestamp" target="1.8" />
       <module name="spring-impl-test" target="1.8" />
