@@ -39,7 +39,7 @@ public class PropertiesConfig
   @Bean
   public StringValueProvider propertiesProvider(@Autowired ClassPathResource fileResource)
   {
-    log.debug("Instantiating Properties value provider.");
+    log.debug("Instantiating Properties value provider using resource: " + fileResource);
 
     return () ->
     {
