@@ -18,7 +18,7 @@ import java.util.Properties;
  * @author Rob Benton
  */
 @Configuration
-@ImportResource("/META-INF/provider-properties-spring.xml")
+@ImportResource("classpath:/META-INF/provider-properties-spring.xml")
 public class PropertiesConfig
 {
   private static final Logger log = LoggerFactory.getLogger(PropertiesConfig.class.getName());
@@ -34,7 +34,7 @@ public class PropertiesConfig
    *
    * @param fileResource location of the property file providing the value to
    *                     return.
-   * @return
+   * @return StringValueProvider
    */
   @Bean
   public StringValueProvider propertiesProvider(@Autowired ClassPathResource fileResource)
@@ -43,12 +43,6 @@ public class PropertiesConfig
 
     return () ->
     {
-      if (!fileResource.exists())
-      {
-        log.error("Could not load value from property file resource: " + fileResource.getDescription());
-        return new String();
-      }
-
       Properties p = new Properties();
       try
       {
