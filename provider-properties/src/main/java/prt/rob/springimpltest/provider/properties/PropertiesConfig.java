@@ -2,10 +2,6 @@ package prt.rob.springimpltest.provider.properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.io.ClassPathResource;
 import prt.rob.springtestimpl.provider.StringValueProvider;
 
@@ -17,8 +13,6 @@ import java.util.Properties;
  *
  * @author Rob Benton
  */
-@Configuration
-@ImportResource("classpath:/META-INF/provider-properties-spring.xml")
 public class PropertiesConfig
 {
   private static final Logger log = LoggerFactory.getLogger(PropertiesConfig.class.getName());
@@ -36,8 +30,7 @@ public class PropertiesConfig
    *                     return.
    * @return StringValueProvider
    */
-  @Bean
-  public StringValueProvider propertiesProvider(@Autowired ClassPathResource fileResource)
+  public StringValueProvider propertiesProvider(ClassPathResource fileResource)
   {
     log.debug("Instantiating Properties value provider using resource: " + fileResource);
 

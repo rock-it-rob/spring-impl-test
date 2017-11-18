@@ -2,8 +2,6 @@ package prt.rob.springimpltest.provider.random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import prt.rob.springtestimpl.provider.StringValueProvider;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -13,8 +11,6 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author Rob Benton
  */
-@SuppressWarnings("WeakerAccess")
-@Configuration
 public class RandomConfig
 {
   private static final Logger log = LoggerFactory.getLogger(RandomConfig.class.getName());
@@ -24,7 +20,6 @@ public class RandomConfig
    *
    * @return StringValueProvider
    */
-  @Bean
   public StringValueProvider getRandomProvider()
   {
     log.debug("Instantiating Random long implementataion.");

@@ -13,6 +13,18 @@
 
   <artifactId>provider-properties</artifactId>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <trimStackTrace>false</trimStackTrace>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
   <dependencies>
     <dependency>
       <groupId>prt.rob.spring-impl-test</groupId>
@@ -23,7 +35,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>5.0.1.RELEASE</version>
+      <version>3.2.18.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>

@@ -14,11 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Rob Benton
  */
-@SuppressWarnings("WeakerAccess")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RandomTest
 {
-  private static final String SPRING_CONTEXT_XML = "/META-INF/spring-context.xml";
+  private static final String SPRING_CONTEXT_XML = "classpath:META-INF/provider-random-spring.xml";
 
   private ClassPathXmlApplicationContext context;
 
