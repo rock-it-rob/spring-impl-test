@@ -2,23 +2,27 @@ package prt.rob.springimpltest.provider.timestamp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import prt.rob.springtestimpl.provider.StringValueProvider;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * TimestampConfig is a Spring configuration class providing beans.
+ * TimestampProvider is a Spring configuration class providing beans.
  *
  * @author Rob Benton
  */
-@SuppressWarnings("WeakerAccess")
-@Configuration
-public class TimestampConfig
+public class TimestampProvider implements StringValueProvider
 {
-  private static final Logger log = LoggerFactory.getLogger(TimestampConfig.class.getName());
+  private static final Logger log = LoggerFactory.getLogger(TimestampProvider.class.getName());
+
+  private String value;
+
+  @Override
+  public String getValue()
+  {
+    return this.value;
+  }
 
   /**
    * Returns an object which implements the {@link StringValueProvider} by
@@ -26,11 +30,10 @@ public class TimestampConfig
    *
    * @return StringValueProvider
    */
-  @Bean
-  public StringValueProvider timestampProvider()
+  public TimestampProvider()
   {
     log.debug("Instantiating Timestamp provider.");
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh24:mm:ss.SSS");
-    return () -> sdf.format(new Date());
+    this.value = sdf.format(new Date());
   }
 }

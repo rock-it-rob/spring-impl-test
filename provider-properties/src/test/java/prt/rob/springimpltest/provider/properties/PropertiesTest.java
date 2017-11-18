@@ -4,7 +4,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import prt.rob.springtestimpl.provider.StringValueProvider;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,12 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PropertiesTest
 {
-  private AnnotationConfigApplicationContext context;
+  private static final String SPRING_CONTEXT_XML = "classpath:META-INF/provider-properties-spring.xml";
+
+  private ClassPathXmlApplicationContext context;
 
   @BeforeAll
   public void beforeAll()
   {
-    this.context = new AnnotationConfigApplicationContext(PropertiesConfig.class);
+    this.context = new ClassPathXmlApplicationContext(SPRING_CONTEXT_XML);
   }
 
   @AfterAll

@@ -27,13 +27,19 @@ public class AppClient
    */
   public static void main(String[] args)
   {
-    try (
-      ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(SPRING_CONTEXT_XML)
-    )
+    ClassPathXmlApplicationContext context = null;
+    try
     {
+      context = new ClassPathXmlApplicationContext(SPRING_CONTEXT_XML);
       StringValueProvider provider = context.getBean(StringValueProvider.class);
       String value = provider.getValue();
       log.info(value);
+    } finally
+    {
+      if (context != null)
+      {
+        context.close();
+      }
     }
   }
 }

@@ -18,4 +18,8 @@
     <constructor-arg value="${config.file.location}"/>
   </bean>
 
+  <bean class="prt.rob.springimpltest.provider.properties.PropertiesProvider">
+    <constructor-arg ref="fileResource"/>
+  </bean>
+
 </beans>

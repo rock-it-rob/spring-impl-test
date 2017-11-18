@@ -2,10 +2,6 @@ package prt.rob.springimpltest.provider.properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.io.ClassPathResource;
 import prt.rob.springtestimpl.provider.StringValueProvider;
 
@@ -13,17 +9,23 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * PropertiesConfig is a Spring configuration class.
+ * PropertiesProvider is a Spring configuration class.
  *
  * @author Rob Benton
  */
-@Configuration
-@ImportResource("classpath:/META-INF/provider-properties-spring.xml")
-public class PropertiesConfig
+public class PropertiesProvider implements StringValueProvider
 {
-  private static final Logger log = LoggerFactory.getLogger(PropertiesConfig.class.getName());
+  private static final Logger log = LoggerFactory.getLogger(PropertiesProvider.class.getName());
 
   private static final String VALUE_PROPERTY = "provider.string.value";
+
+  private String value;
+
+  @Override
+  public String getValue()
+  {
+    return this.value;
+  }
 
   /**
    * Gets {@link StringValueProvider} implemented by returning a value from a
@@ -36,22 +38,18 @@ public class PropertiesConfig
    *                     return.
    * @return StringValueProvider
    */
-  @Bean
-  public StringValueProvider propertiesProvider(@Autowired ClassPathResource fileResource)
+  public PropertiesProvider(ClassPathResource fileResource)
   {
     log.debug("Instantiating Properties value provider using resource: " + fileResource);
 
-    return () ->
+    Properties p = new Properties();
+    try
     {
-      Properties p = new Properties();
-      try
-      {
-        p.load(fileResource.getInputStream());
-      } catch (IOException e)
-      {
-        log.error("Error reading from property file input stream: " + e.getMessage());
-      }
-      return p.getProperty(VALUE_PROPERTY, "");
-    };
+      p.load(fileResource.getInputStream());
+    } catch (IOException e)
+    {
+      log.error("Error reading from property file input stream: " + e.getMessage());
+    }
+    this.value = p.getProperty(VALUE_PROPERTY, "");
   }
 }
