@@ -1,1 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
+
+app-client/target
+provider-api/target
+provider-properties/target
+provider-random/target
+provider-timestamp/target
