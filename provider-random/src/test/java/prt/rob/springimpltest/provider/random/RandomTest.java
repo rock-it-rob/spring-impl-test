@@ -4,7 +4,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 import prt.rob.springtestimpl.provider.StringValueProvider;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,32 +17,32 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RandomTest
 {
-  private static final String SPRING_CONTEXT_XML = "classpath:META-INF/provider-random-spring.xml";
+    private static final String SPRING_CONTEXT_XML = "provider-random-spring.xml";
 
-  private ClassPathXmlApplicationContext context;
+    private GenericXmlApplicationContext context;
 
-  @BeforeAll
-  public void beforeAll()
-  {
-    context = new ClassPathXmlApplicationContext(SPRING_CONTEXT_XML);
-  }
+    @BeforeAll
+    public void beforeAll()
+    {
+        context = new GenericXmlApplicationContext(SPRING_CONTEXT_XML);
+    }
 
-  @AfterAll
-  public void afterAll()
-  {
-    context.close();
-  }
+    @AfterAll
+    public void afterAll()
+    {
+        context.close();
+    }
 
-  /**
-   * Gets the value from the provider implementation and assures it is not null.
-   */
-  @Test
-  public void testValue()
-  {
-    StringValueProvider provider = this.context.getBean(StringValueProvider.class);
-    assertNotNull(provider);
-    String value = provider.getValue();
-    assertNotNull(value);
-    assertTrue(value.length() != 0);
-  }
+    /**
+     * Gets the value from the provider implementation and assures it is not null.
+     */
+    @Test
+    public void testValue()
+    {
+        StringValueProvider provider = this.context.getBean(StringValueProvider.class);
+        assertNotNull(provider);
+        String value = provider.getValue();
+        assertNotNull(value);
+        assertTrue(value.length() != 0);
+    }
 }

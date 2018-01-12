@@ -2,6 +2,8 @@ package prt.rob.springimpltest.provider.properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.io.ClassPathResource;
@@ -34,6 +36,8 @@ public class PropertiesConfig
      *                     return.
      * @return StringValueProvider
      */
+    @Bean
+    @Autowired
     public StringValueProvider propertiesProvider(ClassPathResource fileResource)
     {
         log.debug("Instantiating Properties value provider using resource: " + fileResource);

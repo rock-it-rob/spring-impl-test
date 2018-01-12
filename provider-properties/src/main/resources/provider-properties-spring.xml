@@ -4,6 +4,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+  <context:annotation-config/>
   <context:property-placeholder properties-ref="defaultProperties"/>
 
   <bean id="defaultProperties" class="java.util.Properties">
@@ -19,11 +20,5 @@
   </bean>
 
   <bean class="prt.rob.springimpltest.provider.properties.PropertiesConfig"/>
-
-  <bean
-    factory-bean="prt.rob.springimpltest.provider.properties.PropertiesConfig"
-    factory-method="propertiesProvider">
-    <constructor-arg ref="fileResource"/>
-  </bean>
 
 </beans>
