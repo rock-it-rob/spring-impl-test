@@ -18,7 +18,6 @@ import java.util.Properties;
  * @author Rob Benton
  */
 @Configuration
-@ImportResource("provider-properties-spring.xml")
 public class PropertiesConfig
 {
     private static final Logger log = LoggerFactory.getLogger(PropertiesConfig.class.getName());
