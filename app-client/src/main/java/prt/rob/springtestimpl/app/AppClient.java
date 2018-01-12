@@ -2,7 +2,7 @@ package prt.rob.springtestimpl.app;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 import prt.rob.springtestimpl.provider.StringValueProvider;
 
 /**
@@ -13,33 +13,26 @@ import prt.rob.springtestimpl.provider.StringValueProvider;
  *
  * @author Rob Benton
  */
-@SuppressWarnings("WeakerAccess")
 public class AppClient
 {
-  private static final Logger log = LoggerFactory.getLogger(AppClient.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(AppClient.class.getName());
 
-  private static final String SPRING_CONTEXT_XML = "classpath:/META-INF/app-client-spring.xml";
+    private static final String SPRING_CONTEXT_XML = "app-client-spring.xml";
 
-  /**
-   * Main method.
-   *
-   * @param args leave empty
-   */
-  public static void main(String[] args)
-  {
-    ClassPathXmlApplicationContext context = null;
-    try
+    /**
+     * Main method.
+     *
+     * @param args leave empty
+     */
+    public static void main(String[] args)
     {
-      context = new ClassPathXmlApplicationContext(SPRING_CONTEXT_XML);
-      StringValueProvider provider = context.getBean(StringValueProvider.class);
-      String value = provider.getValue();
-      log.info(value);
-    } finally
-    {
-      if (context != null)
-      {
-        context.close();
-      }
+        try (
+            GenericXmlApplicationContext context = new GenericXmlApplicationContext(SPRING_CONTEXT_XML)
+        )
+        {
+            StringValueProvider provider = context.getBean(StringValueProvider.class);
+            String value = provider.getValue();
+            log.info(value);
+        }
     }
-  }
 }
