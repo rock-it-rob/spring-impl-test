@@ -6,8 +6,4 @@
 
   <bean class="prt.rob.springimpltest.provider.random.RandomConfig"/>
 
-  <bean
-    factory-bean="prt.rob.springimpltest.provider.random.RandomConfig"
-    factory-method="getRandomProvider"/>
-
 </beans>
