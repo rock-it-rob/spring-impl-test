@@ -4,7 +4,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import prt.rob.springtestimpl.provider.StringValueProvider;
 
@@ -16,32 +15,32 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PropertiesTest
 {
-  private static final String SPRING_CONTEXT_XML = "classpath:META-INF/provider-properties-spring.xml";
+    private static final String SPRING_CONTEXT_XML = "provider-properties-spring.xml";
 
-  private ClassPathXmlApplicationContext context;
+    private ClassPathXmlApplicationContext context;
 
-  @BeforeAll
-  public void beforeAll()
-  {
-    this.context = new ClassPathXmlApplicationContext(SPRING_CONTEXT_XML);
-  }
+    @BeforeAll
+    public void beforeAll()
+    {
+        this.context = new ClassPathXmlApplicationContext(SPRING_CONTEXT_XML);
+    }
 
-  @AfterAll
-  public void afterAll()
-  {
-    this.context.close();
-  }
+    @AfterAll
+    public void afterAll()
+    {
+        this.context.close();
+    }
 
-  /**
-   * Tests the value retrieval.
-   */
-  @Test
-  public void testValue()
-  {
-    StringValueProvider provider = this.context.getBean(StringValueProvider.class);
-    assertNotNull(provider);
-    String value = provider.getValue();
-    assertNotNull(value);
-    assertTrue(value.length() != 0);
-  }
+    /**
+     * Tests the value retrieval.
+     */
+    @Test
+    public void testValue()
+    {
+        StringValueProvider provider = this.context.getBean(StringValueProvider.class);
+        assertNotNull(provider);
+        String value = provider.getValue();
+        assertNotNull(value);
+        assertTrue(value.length() != 0);
+    }
 }
